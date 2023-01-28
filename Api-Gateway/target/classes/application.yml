@@ -4,5 +4,10 @@ spring:
   cloud:
     config:
       enabled: true
+    gateway:
+      globalcors:
+        cors-configurations:
+          '[**]':
+            allowed-origins: '*'
   config:
     import: optional:configserver:http://localhost:2000

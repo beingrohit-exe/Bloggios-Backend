@@ -54,9 +54,9 @@ public class registerImplementation implements registerService {
             throw new ApiException(HttpStatus.BAD_REQUEST, RegisterConstants.USERNAME_TAKEN_MESSAGE);
         }
         String name = logicProcessor.capitalizeLetter(registerRequest.getName());
-        Role role = roleRepository.findById("2b628dbc-4c3f-4978-adec-f33969f4f51b").get();
+
         List<Role> roles = new ArrayList<>();
-        roles.add(role);
+
         User userSave = User
                 .builder()
                 .name(name)
