@@ -1,10 +1,10 @@
 package com.userModule.registrationService.Implementation;
 
-import RegistrationServiceApiConstants.RegisterConstants;
-import Exceptions.ApiException;
+import com.userModule.registrationService.Constants.RegisterConstants;
 import com.userModule.registrationService.Entity.RegistrationToken;
 import com.userModule.registrationService.Entity.Role;
 import com.userModule.registrationService.Entity.User;
+import com.userModule.registrationService.Exceptions.ApiException;
 import com.userModule.registrationService.Logic.logicProcessor;
 import com.userModule.registrationService.Payloads.registerRequest;
 import com.userModule.registrationService.Repository.registerRepository;
@@ -56,7 +56,15 @@ public class registerImplementation implements registerService {
         String name = logicProcessor.capitalizeLetter(registerRequest.getName());
 
         List<Role> roles = new ArrayList<>();
-
+        Boolean enabledUser;
+        if (registerRepository.count()==0){
+            roles.add(roleRepository.findById("admin").get());
+            enabledUser = Boolean.TRUE;
+        }
+        else {
+            roles.add(roleRepository.findById("normal").get());
+            enabledUser = Boolean.FALSE;
+        }
         User userSave = User
                 .builder()
                 .name(name)
@@ -66,7 +74,8 @@ public class registerImplementation implements registerService {
                 .roles(roles)
                 .dateRegistered(LocalDate.now())
                 .timeRegistered(LocalTime.now())
-                .isEnabled(Boolean.FALSE)
+                .isEnabled(enabledUser)
+                .isAccountNonLocked(enabledUser)
                 .build();
         User registeredUser = registerRepository.save(userSave);
         return registeredUser;

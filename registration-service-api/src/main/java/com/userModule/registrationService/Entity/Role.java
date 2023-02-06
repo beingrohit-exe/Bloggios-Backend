@@ -25,8 +25,6 @@ import java.util.Date;
 public class Role {
 
     @Id
-    @GeneratedValue(generator = "randomUUID")
-    @GenericGenerator(name = "randomUUID", strategy = "org.hibernate.id.UUIDGenerator")
     private String roleId;
     private String roleName;
     private String userId;

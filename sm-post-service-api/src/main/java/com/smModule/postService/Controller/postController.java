@@ -1,7 +1,7 @@
 package com.smModule.postService.Controller;
 
-import SmPostServiceApiConstants.PostConstants;
 import com.smModule.postService.Config.CustomPrincipal;
+import com.smModule.postService.Constants.PostConstants;
 import com.smModule.postService.Payloads.GetPostResponse;
 import com.smModule.postService.Payloads.postRequest;
 import com.smModule.postService.Payloads.postResponse;

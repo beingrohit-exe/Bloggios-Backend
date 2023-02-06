@@ -1,7 +1,6 @@
 package com.smModule.categoryService.Exception;
 
-import Exceptions.ApiException;
-import Payloads.ApiResponse;
+import com.smModule.categoryService.Payload.ApiResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;

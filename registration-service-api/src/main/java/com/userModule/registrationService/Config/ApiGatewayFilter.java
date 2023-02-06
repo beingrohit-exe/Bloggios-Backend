@@ -1,11 +1,11 @@
 package com.userModule.registrationService.Config;
 
-import Payloads.ApiResponse;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.userModule.registrationService.Constants.RegisterConstants;
+import com.userModule.registrationService.Payloads.ApiResponse;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.filter.GenericFilterBean;
-import RegistrationServiceApiConstants.RegisterConstants;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;

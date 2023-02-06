@@ -1,7 +1,6 @@
 package com.userModule.registrationService.Exceptions;
 
-import Exceptions.ApiException;
-import Payloads.ApiResponse;
+import com.userModule.registrationService.Payloads.ApiResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;

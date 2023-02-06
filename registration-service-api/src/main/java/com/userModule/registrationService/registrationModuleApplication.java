@@ -30,8 +30,12 @@ public class registrationModuleApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-//        Role role_admin = Role.builder().roleName("role_admin").userId("12345").createdAt(new Date()).isActive(true).build();
-//        log.warn("Adding Role");
-//        this.roleRepository.save(role_admin);
+        if (roleRepository.count() == 0) {
+            Role role_admin = Role.builder().roleId("admin").roleName("role_admin").userId("SuperAdmin").createdAt(new Date()).isActive(true).build();
+            Role role_normal = Role.builder().roleId("user").roleName("role_user").userId("SuperAdmin").createdAt(new Date()).isActive(true).build();
+            log.warn("Adding Role");
+            List<Role> roles = new ArrayList<>(List.of(role_normal, role_admin));
+            this.roleRepository.saveAll(roles);
+        }
     }
 }

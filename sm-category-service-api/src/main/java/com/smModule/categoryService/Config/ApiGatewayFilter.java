@@ -1,8 +1,8 @@
 package com.smModule.categoryService.Config;
 
-import Payloads.ApiResponse;
-import SmCategoryServiceApiConstants.CategoryConstants;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.smModule.categoryService.Constants.CategoryConstants;
+import com.smModule.categoryService.Payload.ApiResponse;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.filter.GenericFilterBean;

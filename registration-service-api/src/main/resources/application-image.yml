@@ -1,0 +1,13 @@
+spring:
+  zipkin:
+    base-url: http://zipkin:9411
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: bloggios
+    password: password
+    url: jdbc:mysql://bloggios-mysql:3306/bloggios
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://discovery-server:8761/eureka

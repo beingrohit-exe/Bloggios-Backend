@@ -1,10 +1,10 @@
 package com.userModule.registrationService.Implementation;
 
-import Exceptions.ApiException;
-import Payloads.ApiResponse;
-import RegistrationServiceApiConstants.RegisterConstants;
+import com.userModule.registrationService.Constants.RegisterConstants;
 import com.userModule.registrationService.Entity.Role;
 import com.userModule.registrationService.Entity.User;
+import com.userModule.registrationService.Exceptions.ApiException;
+import com.userModule.registrationService.Payloads.ApiResponse;
 import com.userModule.registrationService.Payloads.assignResponse;
 import com.userModule.registrationService.Payloads.registerResponse;
 import com.userModule.registrationService.Repository.registerRepository;

@@ -1,8 +1,7 @@
 package com.userModule.registrationService.Config;
 
-import Exceptions.ApiException;
-import Payloads.ApiResponse;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.userModule.registrationService.Payloads.ApiResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.web.access.AccessDeniedHandler;
@@ -12,7 +11,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.util.Map;
 
 /**
  * Author : Rohit Parihar
