@@ -1,9 +1,8 @@
 package com.smModule.tagService.Config;
 
-import Payloads.ApiResponse;
-import SmCategoryServiceApiConstants.CategoryConstants;
-import SmTagServiceApiConstants.TagConstants;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.smModule.tagService.Constants.TagConstants;
+import com.smModule.tagService.Payload.ApiResponse;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.filter.GenericFilterBean;

@@ -1,6 +1,6 @@
 package com.userModule.registrationService.Entity;
 
-import RegistrationServiceApiConstants.RegisterConstants;
+import com.userModule.registrationService.Constants.RegisterConstants;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

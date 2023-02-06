@@ -1,7 +1,7 @@
 package com.smModule.postService.Config;
 
-import Payloads.ApiResponse;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.smModule.postService.Payloads.ApiResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.web.access.AccessDeniedHandler;

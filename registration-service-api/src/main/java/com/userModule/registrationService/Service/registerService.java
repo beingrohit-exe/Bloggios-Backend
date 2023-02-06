@@ -1,9 +1,7 @@
 package com.userModule.registrationService.Service;
 
-import Payloads.ApiResponse;
 import com.userModule.registrationService.Entity.User;
 import com.userModule.registrationService.Payloads.registerRequest;
-import com.userModule.registrationService.Payloads.registerResponse;
 
 /**
  * Author : Rohit Parihar

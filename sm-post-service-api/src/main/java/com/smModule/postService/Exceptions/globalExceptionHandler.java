@@ -1,6 +1,5 @@
 package com.smModule.postService.Exceptions;
 
-import Exceptions.ApiException;
 import com.smModule.postService.Payloads.ApiResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

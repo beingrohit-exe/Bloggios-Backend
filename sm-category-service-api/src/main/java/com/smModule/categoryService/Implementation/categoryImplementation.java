@@ -1,10 +1,10 @@
 package com.smModule.categoryService.Implementation;
 
-import Exceptions.ApiException;
-import SmCategoryServiceApiConstants.CategoryConstants;
+import com.smModule.categoryService.Constants.CategoryConstants;
+import com.smModule.categoryService.Entity.Category;
+import com.smModule.categoryService.Exception.ApiException;
 import com.smModule.categoryService.Payload.categoryRequest;
 import com.smModule.categoryService.Payload.categoryResponse;
-import com.smModule.categoryService.Entity.Category;
 import com.smModule.categoryService.Repository.categoryRepository;
 import com.smModule.categoryService.Service.categoryService;
 import lombok.RequiredArgsConstructor;

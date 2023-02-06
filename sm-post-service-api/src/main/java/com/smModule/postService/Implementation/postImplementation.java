@@ -1,13 +1,9 @@
 package com.smModule.postService.Implementation;
 
-import Exceptions.ApiException;
-import SmCategoryServiceApiConstants.CategoryConstants;
-import SmCategoryServiceApiConstants.CategoryUri;
-import SmPostServiceApiConstants.PostConstants;
-import SmTagServiceApiConstants.TagConstants;
-import SmTagServiceApiConstants.TagUri;
+import com.smModule.postService.Constants.*;
 import com.smModule.postService.Entity.Post;
 import com.smModule.postService.Entity.Tag;
+import com.smModule.postService.Exceptions.ApiException;
 import com.smModule.postService.Payloads.GetPostResponse;
 import com.smModule.postService.Payloads.pagedResponse;
 import com.smModule.postService.Payloads.postRequest;

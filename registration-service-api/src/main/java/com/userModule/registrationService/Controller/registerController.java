@@ -1,7 +1,7 @@
 package com.userModule.registrationService.Controller;
 
-import RegistrationServiceApiConstants.RegisterConstants;
-import RegistrationServiceApiConstants.RegisterUri;
+import com.userModule.registrationService.Constants.RegisterConstants;
+import com.userModule.registrationService.Constants.RegisterUri;
 import com.userModule.registrationService.Entity.CustomPrincipal;
 import com.userModule.registrationService.Entity.User;
 import com.userModule.registrationService.Events.registrationDoneEvent;
@@ -9,6 +9,7 @@ import com.userModule.registrationService.Payloads.registerRequest;
 import com.userModule.registrationService.Service.registerService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -33,6 +34,12 @@ public class registerController {
 
     private final registerService registerService;
     private final ApplicationEventPublisher applicationEventPublisher;
+
+    @Value("${build.version}")
+    private String version;
+
+    @Value("${build.dependencies}")
+    private String name;
 
     @PostMapping
     @ResponseStatus(value = HttpStatus.CREATED)
@@ -70,5 +77,11 @@ public class registerController {
     public String getName(@PathVariable String userId, CustomPrincipal customPrincipal){
         log.error(customPrincipal.getUsername());
         return registerService.getName(customPrincipal.getUserId());
+    }
+
+    @ResponseStatus(HttpStatus.OK)
+    @GetMapping("build-info")
+    public String projectInfo(){
+        return "Version: " + version + "\n Name: " + name;
     }
 }

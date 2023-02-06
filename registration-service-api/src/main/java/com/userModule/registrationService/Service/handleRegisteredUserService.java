@@ -1,9 +1,8 @@
 package com.userModule.registrationService.Service;
 
-import Payloads.ApiResponse;
-import com.userModule.registrationService.Payloads.registerRequest;
-import com.userModule.registrationService.Payloads.registerResponse;
+import com.userModule.registrationService.Payloads.ApiResponse;
 import com.userModule.registrationService.Payloads.assignResponse;
+import com.userModule.registrationService.Payloads.registerResponse;
 
 import java.util.List;
 

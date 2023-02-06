@@ -1,8 +1,0 @@
-spring:
-  application:
-    name: SM-COMMENT-SERVICE-API
-  cloud:
-    config:
-      enabled: true
-  config:
-    import: optional:configserver:http://localhost:2000
