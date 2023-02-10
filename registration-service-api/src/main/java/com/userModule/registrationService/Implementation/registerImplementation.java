@@ -62,7 +62,7 @@ public class registerImplementation implements registerService {
             enabledUser = Boolean.TRUE;
         }
         else {
-            roles.add(roleRepository.findById("normal").get());
+            roles.add(roleRepository.findById("user").get());
             enabledUser = Boolean.FALSE;
         }
         User userSave = User
@@ -114,5 +114,31 @@ public class registerImplementation implements registerService {
     public String getName(String userId) {
         User user = this.registerRepository.findById(userId).orElseThrow(() -> new ApiException(HttpStatus.BAD_REQUEST, RegisterConstants.USER_NOT_FOUND_EXCEPTION));
         return user.getName();
+    }
+
+    @Override
+    public Boolean usernameConstraint(String username) {
+        if (username.toLowerCase().length()>2){
+            if (username.contains(" ")){
+                return Boolean.TRUE;
+            }
+            return this.registerRepository.existsByUsername(username);
+        }
+        else {
+            return Boolean.TRUE;
+        }
+    }
+
+    @Override
+    public Boolean emailConstraint(String email) {
+        if (email.contains("@") && email.length()>7 && email.contains(".") && email.substring(email.lastIndexOf(".")).length()>1){
+            if (email.trim().contains(" ")){
+                return Boolean.TRUE;
+            }
+            return this.registerRepository.existsByEmail(email);
+        }
+        else {
+            return Boolean.TRUE;
+        }
     }
 }

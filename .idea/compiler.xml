@@ -8,9 +8,11 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="registration-service-api" />
+        <module name="discovery-server" />
         <module name="authorization-server" />
         <module name="sm-post-service-api" />
         <module name="sm-tag-service-api" />
+        <module name="api-gateway" />
         <module name="sm-category-service-api" />
         <module name="Discovery-Server" />
         <module name="Api-Gateway" />
@@ -23,7 +25,6 @@
       <module name="cloud-gateway" target="11" />
       <module name="config-server" target="11" />
       <module name="config-server (1) (org.portal.servers)" target="11" />
-      <module name="discovery-server" target="11" />
       <module name="employee-service-api" target="11" />
       <module name="global-exception-handler" target="11" />
       <module name="Idgenerator-Service" target="11" />
@@ -43,6 +44,7 @@
       <module name="Profile-Service" options="-parameters" />
       <module name="api-constants" options="-parameters" />
       <module name="api-constants (1) (org.portal.common)" options="-parameters" />
+      <module name="api-gateway" options="-parameters" />
       <module name="authorization-server" options="-parameters" />
       <module name="authorization-service-api" options="-parameters" />
       <module name="cloud-gateway" options="-parameters" />

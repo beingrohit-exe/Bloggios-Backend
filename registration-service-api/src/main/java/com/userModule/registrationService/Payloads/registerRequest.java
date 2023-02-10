@@ -22,20 +22,20 @@ import javax.validation.constraints.Size;
 @NoArgsConstructor
 public class registerRequest {
 
-    @NotBlank
-    @Size(min = 2, max = 20, message = RegisterConstants.NAME_VALIDATION)
+    @NotBlank(message = RegisterConstants.NAME_VALIDATION)
+    @Size(min = 2, max = 40, message = RegisterConstants.NAME_VALIDATION)
     private String name;
 
-    @NotBlank
-    @Size(min = 5, max = 20, message = RegisterConstants.EMAIL_VALIDATION)
+    @NotBlank(message = RegisterConstants.EMAIL_VALIDATION)
+    @Size(min = 5, max = 40, message = RegisterConstants.EMAIL_VALIDATION)
     @Email(message = RegisterConstants.EMAIL_VALIDATION)
     private String email;
 
-    @NotBlank
-    @Size(min = 4, max = 20,message = RegisterConstants.USERNAME_VALIDATION)
+    @NotBlank(message = RegisterConstants.USERNAME_VALIDATION)
+    @Size(min = 2, max = 20,message = RegisterConstants.USERNAME_VALIDATION)
     private String username;
 
-    @NotBlank
+    @NotBlank(message = RegisterConstants.PASSWORD_VALIDATION)
     @Size(min = 8, message = RegisterConstants.PASSWORD_VALIDATION)
     private String password;
 
