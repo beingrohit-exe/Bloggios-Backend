@@ -17,5 +17,6 @@ public interface registerService {
     String validateRegistrationToken(String token);
     Boolean checkByUserId(String userId);
     String getName(String userId);
-
+    Boolean usernameConstraint(String username);
+    Boolean emailConstraint(String email);
 }

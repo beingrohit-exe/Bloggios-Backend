@@ -7,6 +7,7 @@ import com.userModule.registrationService.Entity.User;
 import com.userModule.registrationService.Events.registrationDoneEvent;
 import com.userModule.registrationService.Payloads.registerRequest;
 import com.userModule.registrationService.Service.registerService;
+import io.github.resilience4j.ratelimiter.annotation.RateLimiter;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -43,7 +44,7 @@ public class registerController {
 
     @PostMapping
     @ResponseStatus(value = HttpStatus.CREATED)
-    public String registerUser(@Valid @RequestBody registerRequest registerRequest, HttpServletRequest request){
+    public String registerUser(@Valid @RequestBody registerRequest registerRequest, HttpServletRequest request) throws InterruptedException {
         User user = this.registerService.registerUser(registerRequest);
         applicationEventPublisher.publishEvent(new registrationDoneEvent(user, gettingUrl(request)));
         return RegisterConstants.COMPLETE_REGISTRATION_MESSAGE;
@@ -83,5 +84,19 @@ public class registerController {
     @GetMapping("build-info")
     public String projectInfo(){
         return "Version: " + version + "\n Name: " + name;
+    }
+
+    @GetMapping("/exists-username/{username}")
+    @ResponseStatus(HttpStatus.OK)
+    public Boolean usernameConstraint(@PathVariable String username){
+        log.warn("Request Init for Username Check");
+        return this.registerService.usernameConstraint(username);
+    }
+
+    @GetMapping("exists-email/{email}")
+    @ResponseStatus(HttpStatus.OK)
+    public Boolean emailConstraint(@PathVariable String email){
+        log.warn("Request Init for Email check");
+        return this.registerService.emailConstraint(email);
     }
 }
