@@ -4,19 +4,21 @@ import com.smModule.postService.Constants.*;
 import com.smModule.postService.Entity.Post;
 import com.smModule.postService.Entity.Tag;
 import com.smModule.postService.Exceptions.ApiException;
-import com.smModule.postService.Payloads.GetPostResponse;
-import com.smModule.postService.Payloads.pagedResponse;
-import com.smModule.postService.Payloads.postRequest;
-import com.smModule.postService.Payloads.postResponse;
+import com.smModule.postService.Payloads.*;
 import com.smModule.postService.Repository.postRepository;
 import com.smModule.postService.Service.postService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.BodyInserters;
 import org.springframework.web.reactive.function.client.WebClient;
 
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
@@ -133,8 +135,41 @@ public class postImplementation implements postService {
     }
 
     @Override
-    public List<pagedResponse> getAllPosts(Long pageNumber, Long pageSize) {
-        return null;
+    public pagedResponse getAllPosts(Integer pageNumber, Integer pageSize, String sortId, String sortDirection) {
+        Sort sort = null;
+        if (sortDirection.equals("ascending")){
+            sort = Sort.by(sortId).ascending();
+        }
+        if (sortDirection.equals("descending")){
+            sort = Sort.by(sortId).descending();
+        }
+        assert sort != null;
+        Pageable page = PageRequest.of(pageNumber, pageSize, sort);
+        Page<Post> pageContent = this.postRepository.findAll(page);
+        List<Post> allPost = pageContent.getContent();
+        List<AllPostResponse> postResponse = allPost.stream().map((e) -> AllPostResponse.builder()
+                        .caption(e.getCaption())
+                        .tags(e.getTags())
+                        .userId(e.getUserId())
+                        .categoryId(e.getCategoryId())
+                        .dateCreated(e.getDateCreated())
+                        .isEdited(e.getDateCreated() != null ? Boolean.TRUE : Boolean.FALSE)
+                        .build())
+                .collect(Collectors.toList());
+        pagedResponse<Object> allResponse = pagedResponse
+                .builder()
+                .pageContents(Collections.singletonList(postResponse))
+                .isFirst(pageContent.isFirst())
+                .isLast(pageContent.isLast())
+                .totalPages(pageContent.getTotalPages())
+                .totalElements(pageContent.getTotalElements())
+                .pageNumber(pageContent.getNumber())
+                .pageSize(pageContent.getSize())
+                .build();
+        if (postResponse.isEmpty()){
+            throw new ApiException(HttpStatus.NO_CONTENT, PostConstants.NO_POSTS);
+        }
+        return allResponse;
     }
 
     @Override
