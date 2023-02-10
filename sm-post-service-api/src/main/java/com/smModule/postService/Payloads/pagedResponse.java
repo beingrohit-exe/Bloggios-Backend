@@ -19,10 +19,10 @@ import java.util.List;
 @Builder
 public class pagedResponse<T> {
     private List<T> pageContents;
-    private Long pageNumber;
-    private Long pageSize;
+    private Integer pageNumber;
+    private Integer pageSize;
     private Long totalElements;
-    private Long totalPages;
+    private Integer totalPages;
     private Boolean isFirst;
     private Boolean isLast;
 }

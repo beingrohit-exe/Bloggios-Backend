@@ -2,9 +2,7 @@ package com.smModule.postService.Controller;
 
 import com.smModule.postService.Config.CustomPrincipal;
 import com.smModule.postService.Constants.PostConstants;
-import com.smModule.postService.Payloads.GetPostResponse;
-import com.smModule.postService.Payloads.postRequest;
-import com.smModule.postService.Payloads.postResponse;
+import com.smModule.postService.Payloads.*;
 import com.smModule.postService.Service.postService;
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import io.github.resilience4j.retry.annotation.Retry;
@@ -52,5 +50,14 @@ public class postController {
     public GetPostResponse getPost(@PathVariable String postId){
         GetPostResponse post = this.postService.getPost(postId);
         return post;
+    }
+
+    @GetMapping()
+    @ResponseStatus(HttpStatus.OK)
+    public pagedResponse getAll(@RequestParam(value = "pageNumber", defaultValue = "0" , required = false) Integer pageNumber,
+                                  @RequestParam(value = "pageSize", defaultValue = "10", required = false) Integer pageSize,
+                                  @RequestParam(value = "pageSort", defaultValue = "dateCreated", required = false) String pageSort,
+                                  @RequestParam(value = "sortDirection", defaultValue = "ascending", required = false) String sortDirection){
+        return this.postService.getAllPosts(pageNumber, pageSize, pageSort, sortDirection);
     }
 }

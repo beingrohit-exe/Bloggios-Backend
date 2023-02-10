@@ -21,7 +21,7 @@ public interface postService {
     postResponse createPost(postRequest postRequest, String userId) throws ExecutionException, InterruptedException;
     postResponse updatePost(postRequest postRequest, String postId, String userId);
     GetPostResponse getPost(String postId);
-    List<pagedResponse> getAllPosts(Long pageNumber, Long pageSize);
+    pagedResponse getAllPosts(Integer pageNumber, Integer pageSize, String sortId, String sortDirection);
     List<pagedResponse> getAllPostsByCategory(String categoryId, Long pageNumber, Long pageSize);
     List<pagedResponse> getAllPostsByTags(String tagId, Long pageNumber, Long pageSize);
     postResponse deletePost(String postId);
